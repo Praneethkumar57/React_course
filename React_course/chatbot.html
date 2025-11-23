@@ -23,35 +23,41 @@
           );
         }
 
-        function ChatMessage(props){
-          const message = props.message;
-          const sender = props.sender;
 
-          if(sender == 'robot'){
-            return(
-              <div>
+
+        
+        function ChatMessage({message, sender}){
+          //const message = props.message;
+          //const {message} = props; // both are same way to create message variable 
+          //const sender = props.sender;
+
+          //const {message, sender} = props;
+
+          // if(sender == 'robot'){
+          //   return(
+          //     <div>
                  
-                <img src="car2.jpg" width="50"></img>
-                {message} 
-              </div>
-            );
-          }
+          //       <img src="car2.jpg" width="50"></img>
+          //       {message} 
+          //     </div>
+          //   );
+          // }
 
-          else{
             return(
               <div>
+                {sender==='robot' && <img src="car2.jpg" width="50" />}
                 {message}
-                <img src="car1.jpg" width="50"></img>
+                {sender==='user' && <img src="car1.jpg" width="50" />}
               </div>
             );
-          }
           
 
         }
-        
-        // we can insert any javascript code in the {} brackets ChatInput is a javascript code but we inserted them into react using {}
-        // <ChatInput></Chatinput> and {ChatInput} both creates same but <ChatInput></ChatInput> has more advantage
-        const app = (
+
+
+
+        function App(){
+          return(
             <>
                <ChatInput></ChatInput> 
                <ChatMessage message="Hello chatbot" sender="user"></ChatMessage>
@@ -59,12 +65,17 @@
                <ChatMessage message="Can you get me todays date?" sender="user"></ChatMessage>
                <ChatMessage message="Today is november 24" sender="robot"></ChatMessage>
             </>
-        );
+          );
+        }
+        
+        // we can insert any javascript code in the {} brackets ChatInput is a javascript code but we inserted them into react using {}
+        // <ChatInput></Chatinput> and {ChatInput} both creates same but <ChatInput></ChatInput> has more advantage
+        
 
       const container = document.querySelector('.js-container'); // here we are putiing .(dot) so we are looking for a class (here js-container is a class)
       //ReactDOM.createRoot(container).render('Welcome to SuperSimpleDev React Course');
 
-      ReactDOM.createRoot(container).render(app);
+      ReactDOM.createRoot(container).render(<App />);
     </script>
   </body>
 </html>
