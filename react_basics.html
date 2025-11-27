@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="react_basics.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+
+    <script type="text/babel">
+        const button = <button>Hello</button>;
+        const paragraph = <p>paragraph of text</p>;
+
+        const product_cost = 10+2*8;
+
+        const div = (
+            <div>
+               <p>Cotton socks</p>
+               <p>Price: $10</p>
+               <button>Add to cart</button>
+
+               <p>Product cost of your products:{product_cost}</p>
+            </div>
+        );
+
+      const container = document.querySelector('.js-container'); // here we are putiing .(dot) so we are looking for a class (here js-container is a class)
+      //ReactDOM.createRoot(container).render('Welcome to SuperSimpleDev React Course');
+
+      ReactDOM.createRoot(container).render(div);
+    </script>
+  </body>
+</html>

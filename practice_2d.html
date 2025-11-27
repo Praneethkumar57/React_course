@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice_2d</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="react_basics.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+
+    <script type="text/babel">
+
+        function Input({text,setText}){
+            function saveText(event){
+                setText(event.target.value);
+            }
+            return(
+                <>
+                    <input value={text} onChange={saveText} placeholder="Enter your text here" size="30"></input>
+                </>
+            );
+        }
+
+        function Button({text,setText}){
+            function reset(){
+                setText('');
+            }
+            return(
+                <>
+                    <button onClick={reset}>Reset</button>
+                </>
+            );
+        }
+
+        function Example({text,setText}){
+
+            function example(){
+                setText('Alice');
+            }
+
+            return(
+                <>
+                    <button onClick={example}>Example</button>
+                </>
+            );
+        }
+
+        function Show({text,setText}){
+
+            return(
+                <>
+                    <p>Hello {text} </p>
+                </>
+            );
+        }
+
+        function App(){
+            const [text,setText]=React.useState('');
+            return(
+                <>
+                    <Input text={text} setText={setText} />
+                    <Button text={text} setText={setText} />
+                    <Example text={text} setText={setText} />
+                    <Show text={text} setText={setText} />
+                </>
+            );
+        }
+      
+        const container = document.querySelector('.js-container');
+
+        ReactDOM.createRoot(container).render(<App/>);
+    </script>
+  </body>
+</html>
